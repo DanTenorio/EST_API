@@ -55,34 +55,44 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>com.microsoft.azure</groupId>
-				<artifactId>azure-webapp-maven-plugin</artifactId>
-				<version>2.9.0</version>
-			    <configuration>
-			        <schemaVersion>v2</schemaVersion>
-			        <resourceGroup>ESTapi-1681400098380-rg</resourceGroup>
-			        <appName>ESTapi-1681400098380</appName>
-			        <pricingTier>B1</pricingTier>
-			        <region>centralus</region>
-			        <runtime>
-			            <os>Linux</os>
-			            <javaVersion>Java 17</javaVersion>
-			            <webContainer>Java SE</webContainer>
-			        </runtime>
-			        <deployment>
-			            <resources>
-			                <resource>
-			                    <directory>${project.basedir}/target</directory>
-			                    <includes>
-			                        <include>*.jar</include>
-			                    </includes>
-			                </resource>
-			            </resources>
-			        </deployment>
-			    </configuration>
-			</plugin>
+		    <plugin>
+		        <groupId>com.microsoft.azure</groupId>
+		        <artifactId>azure-webapp-maven-plugin</artifactId>
+		        <version>2.10.0</version>
+		        <configuration>
+		            <runtime/>
+		            <deployment>
+		                <resources>
+		                    <resource>
+		                        <directory>T:\JavaProjects\projects\ESTapi/target</directory>
+		                        <includes>
+		                            <include>*.jar</include>
+		                        </includes>
+		                    </resource>
+		                </resources>
+		            </deployment>
+		            <pricingTier>B1</pricingTier>
+		        </configuration>
+		    </plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<spring.profiles.active>dev</spring.profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<spring.profiles.active>prod</spring.profiles.active>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>
