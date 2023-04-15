@@ -1,19 +1,19 @@
 package com.tenorio.ESTapi.company;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class CompanyService {
-    CompanyRepository companyRepository;
-
-    public CompanyService (CompanyRepository companyRepository) {this.companyRepository = companyRepository;}
+    private final CompanyRepository companyRepository;
 
      public void getCompany(Integer id)
     {
         companyRepository.findAll();
     }
 
-    public void addCompany(Company company){
-        companyRepository.save(company);
+    public Company addCompany(Company company){
+        return companyRepository.save(company);
     }
 }

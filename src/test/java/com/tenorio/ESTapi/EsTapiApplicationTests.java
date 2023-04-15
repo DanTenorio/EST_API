@@ -8,6 +8,7 @@ class EsTapiApplicationTests {
 
 	@Test
 	void contextLoads() {
+		System.out.println("CONTEXT LOADS");
 	}
 
 }
