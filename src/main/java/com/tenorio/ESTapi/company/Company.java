@@ -1,10 +1,13 @@
 package com.tenorio.ESTapi.company;
 
+import com.tenorio.ESTapi.employee.Employee;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 @Entity
+@Table(name="t_companies")
 public class Company {
 
     @SequenceGenerator(
@@ -20,9 +23,13 @@ public class Company {
     private Integer id;
     private String name;
 
+
     public Company(){}
 
-    public Company(String name){this.name = name;}
+    public Company(String name){
+        this.name = name;
+
+    }
 
     public Integer getId() {
         return id;
